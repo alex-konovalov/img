@@ -5,11 +5,11 @@
 SetPackageInfo( rec(
 PackageName := "IMG",
 Subtitle := "Computations with iterated monodromy groups",
-Version := "0.0.0",
-Date := "19/11/2012",
+Version := "0.0.3",
+Date := "06/09/2013",
 ## <#GAPDoc Label="Version">
-## <!ENTITY Version "0.0.0">
-## <!ENTITY Date "19/11/2012">
+## <!ENTITY Version "0.0.3">
+## <!ENTITY Date "06/09/2013">
 ## <#/GAPDoc>
 ArchiveURL := Concatenation("https://github.com/laurentbartholdi/img/archive/",~.Version),
 ArchiveFormats := ".tar.gz",
@@ -52,7 +52,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">=4.5.0",
+  GAP := ">=4.6.0",
   NeededOtherPackages := [["FR",">=2.0.0"],
                       ["GAPDoc",">=1.0"]],
   SuggestedOtherPackages := [["Float",">=0.4"]],
@@ -64,7 +64,8 @@ Dependencies := rec(
 
 AvailabilityTest := ReturnTrue,
                     
-BannerString := Concatenation("Loading IMG ", String( ~.Version ), " ...\n"),
+BannerString := Concatenation("Loading IMG ", String( ~.Version ), #CallFuncList(function() if Filename(DirectoriesPackagePrograms("img"),"img_dll.so")=fail then return ""; else return "with DLL"; fi; end,[]),
+  " ...\n"),
 
 Autoload := false,
 TestFile := "tst/testall.g",
